@@ -476,16 +476,6 @@ console.log(yaofour)
   }
 
 
-  // vertpos1=[random([0,300,800,2200,2800,3000]),random([0,300,800,2200,2800,3000])]
-  // vertpos2=[random([0,300,800,2200,2800,3000]),random([0,300,800,2200,2800,3000])]
-  // vertpos3=[random([0,300,800,2200,2800,3000]),random([0,300,800,2200,2800,3000])]
-  // vertpos4=[random([0,300,800,2200,2800,3000]),random([0,300,800,2200,2800,3000])]
-
-
-  // vertpos1=[tianyishengshui[0][0],tianyishengshui[0][1]]
-  // vertpos2=[diershenghuo[0][0],diershenghuo[0][1]]
-  // vertpos3=[dishichengtu[0][0],dishichengtu[0][1]]
-  // vertpos4=[dibachengmu[6][0],dibachengmu[6][1]]
 
   tiandi=gettiandi(yaofour[0]);
 
