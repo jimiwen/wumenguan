@@ -221,7 +221,7 @@ if (seasonpicker<0.35){
 
 function setup() {
   randomSeed(int(fxrand()*100000000))
-  const canvas = createCanvas(3001, 3001);
+  const canvas = createCanvas(3601, 6401);
   //angleMode(DEGREES)
   rc = rough.canvas(canvas.canvas);
   background(colors.main);
@@ -244,91 +244,95 @@ function draw() {
   let stepsize=random(0.01,0.03);
 
   raddd=600;
+  chengtu_centre=[1800,3200];
   dishichengtu=[
-    [1500+raddd*cos(1*2*PI/10),1500+raddd*sin(1*2*PI/10)],
-    [1500+raddd*cos(2*2*PI/10),1500+raddd*sin(2*2*PI/10)],
-    [1500+raddd*cos(3*2*PI/10),1500+raddd*sin(3*2*PI/10)],
-    [1500+raddd*cos(4*2*PI/10),1500+raddd*sin(4*2*PI/10)],
-    [1500+raddd*cos(5*2*PI/10),1500+raddd*sin(5*2*PI/10)],
-    [1500+raddd*cos(6*2*PI/10),1500+raddd*sin(6*2*PI/10)],
-    [1500+raddd*cos(7*2*PI/10),1500+raddd*sin(7*2*PI/10)],
-    [1500+raddd*cos(8*2*PI/10),1500+raddd*sin(8*2*PI/10)],
-    [1500+raddd*cos(9*2*PI/10),1500+raddd*sin(9*2*PI/10)],
-    [1500+raddd*cos(10*2*PI/10),1500+raddd*sin(10*2*PI/10)],
+    [chengtu_centre[0]+raddd*cos(1*2*PI/10),chengtu_centre[1]+1.8*raddd*sin(1*2*PI/10)],
+    [chengtu_centre[0]+raddd*cos(2*2*PI/10),chengtu_centre[1]+1.8*raddd*sin(2*2*PI/10)],
+    [chengtu_centre[0]+raddd*cos(3*2*PI/10),chengtu_centre[1]+1.8*raddd*sin(3*2*PI/10)],
+    [chengtu_centre[0]+raddd*cos(4*2*PI/10),chengtu_centre[1]+1.8*raddd*sin(4*2*PI/10)],
+    [chengtu_centre[0]+raddd*cos(5*2*PI/10),chengtu_centre[1]+1.8*raddd*sin(5*2*PI/10)],
+    [chengtu_centre[0]+raddd*cos(6*2*PI/10),chengtu_centre[1]+1.8*raddd*sin(6*2*PI/10)],
+    [chengtu_centre[0]+raddd*cos(7*2*PI/10),chengtu_centre[1]+1.8*raddd*sin(7*2*PI/10)],
+    [chengtu_centre[0]+raddd*cos(8*2*PI/10),chengtu_centre[1]+1.8*raddd*sin(8*2*PI/10)],
+    [chengtu_centre[0]+raddd*cos(9*2*PI/10),chengtu_centre[1]+1.8*raddd*sin(9*2*PI/10)],
+    [chengtu_centre[0]+raddd*cos(10*2*PI/10),chengtu_centre[1]+1.8*raddd*sin(10*2*PI/10)],
   ];
 
   tianwushengtu=[
-    [1200,1500],
-    [1500,1200],
-    [1500,1500],
-    [1800,1500],
-    [1500,1800],
+    [chengtu_centre[0]-300,chengtu_centre[1]],
+    [chengtu_centre[0],chengtu_centre[1]-500],
+    [chengtu_centre[0],chengtu_centre[1]],
+    [chengtu_centre[0]+300,chengtu_centre[1]],
+    [chengtu_centre[0],chengtu_centre[1]+500],
   ];
 
   tianyishengshui=[
-    [1500,2500]
+    [chengtu_centre[0],chengtu_centre[1]+2000]
   ];
 
-  widsix=350
-
+  widsix=500;
+  bottom_edge=2800;
   diliuchengshui=[
-    [1500-2.5*widsix,3000],
-    [1500-1.5*widsix,3000],
-    [1500-0.5*widsix,3000],
-    [1500+0.5*widsix,3000],
-    [1500+1.5*widsix,3000],
-    [1500+2.5*widsix,3000],
+    [chengtu_centre[0]-2.5*widsix,chengtu_centre[1]+bottom_edge],
+    [chengtu_centre[0]-1.5*widsix,chengtu_centre[1]+bottom_edge],
+    [chengtu_centre[0]-0.5*widsix,chengtu_centre[1]+bottom_edge],
+    [chengtu_centre[0]+0.5*widsix,chengtu_centre[1]+bottom_edge],
+    [chengtu_centre[0]+1.5*widsix,chengtu_centre[1]+bottom_edge],
+    [chengtu_centre[0]+2.5*widsix,chengtu_centre[1]+bottom_edge],
   ];
 
+  left_edge=200;
+  wid8=370;
   dibachengmu=[
-    [1,400],
-    [1,700],
-    [1,1000],
-    [1,1350],
-    [1,1650],
-    [1,1950],
-    [1,2250],
-    [1,2650],
+    [left_edge,chengtu_centre[1]-7*wid8],
+    [left_edge,chengtu_centre[1]-5*wid8],
+    [left_edge,chengtu_centre[1]-3*wid8],
+    [left_edge,chengtu_centre[1]-wid8],
+    [left_edge,chengtu_centre[1]+wid8],
+    [left_edge,chengtu_centre[1]+3*wid8],
+    [left_edge,chengtu_centre[1]+5*wid8],
+    [left_edge,chengtu_centre[1]+7*wid8],
   ];
 
   tiansanshengmu=[
-    [501,1200],
-    [501,1500],
-    [501,1800],
+    [left_edge+400,chengtu_centre[1]-4.6*wid8],
+    [left_edge+400,chengtu_centre[1]],
+    [left_edge+400,chengtu_centre[1]+4.6*wid8],
   ];
-
+  wid6=450;
   tianqichenghuo=[
-    [600,1],
-    [900,1],
-    [1200,1],
-    [1500,1],
-    [1800,1],
-    [2100,1],
-    [2400,1],
+    [chengtu_centre[0]-3*wid6,200],
+    [chengtu_centre[0]-2*wid6,200],
+    [chengtu_centre[0]-wid6,200],
+    [chengtu_centre[0],200],
+    [chengtu_centre[0]+wid6,200],
+    [chengtu_centre[0]+2*wid6,200],
+    [chengtu_centre[0]+3*wid6,200],
   ];
 
   diershenghuo=[
-    [1500-250,501],
-    [1500+250,501]
+    [chengtu_centre[0]-400,801],
+    [chengtu_centre[0]+400,801]
   ];
-  widnine=280
+  widnine=660
+  right_edge=3400
   tianjiuchengjin=[
-    [3000,1500-4*widnine],
-    [3000,1500-3*widnine],
-    [3000,1500-2*widnine],
-    [3000,1500-1*widnine],
-    [3000,1500],
-    [3000,1500+1*widnine],
-    [3000,1500+2*widnine],
-    [3000,1500+3*widnine],
-    [3000,1500+4*widnine],
+    [right_edge,chengtu_centre[1]-4*widnine],
+    [right_edge,chengtu_centre[1]-3*widnine],
+    [right_edge,chengtu_centre[1]-2*widnine],
+    [right_edge,chengtu_centre[1]-1*widnine],
+    [right_edge,chengtu_centre[1]],
+    [right_edge,chengtu_centre[1]+1*widnine],
+    [right_edge,chengtu_centre[1]+2*widnine],
+    [right_edge,chengtu_centre[1]+3*widnine],
+    [right_edge,chengtu_centre[1]+4*widnine],
   ];
 
   disishengjin=[
-    [2500,1050],
-    [2500,1350],
-    [2500,1650],
-    [2500,1950],
+    [right_edge-widnine,chengtu_centre[1]-2.4*widnine],
+    [right_edge-widnine,chengtu_centre[1]-0.8*widnine],
+    [right_edge-widnine,chengtu_centre[1]+0.8*widnine],
+    [right_edge-widnine,chengtu_centre[1]+2.4*widnine],
   ];
 
   fullgua=[
@@ -362,132 +366,9 @@ console.log(yaofour)
     fullgua[tiandi][shengchengY][1],
   ]
 
-  tiandi=gettiandi(yaofour[1]);
-  shengchengX=ceil(random(0,tiandi+0.00001))-1;
-
-
-  shengchengY=ceil(random(0,tiandi+0.00001))-1;
-
-  vertpos2=[
-    fullgua[tiandi][shengchengX][0],
-    fullgua[tiandi][shengchengY][1],
-  ]
-
-  tiandi=gettiandi(yaofour[2]);
-  shengchengX=ceil(random(0,tiandi+0.00001))-1;
-
-  tiandiY=ceil(random(0,1)*10)-1;
-  shengchengY=ceil(random(0,tiandi+0.00001))-1;
-
-  vertpos3=[
-    fullgua[tiandi][shengchengX][0],
-    fullgua[tiandi][shengchengY][1],
-  ]
-
-  tiandi=gettiandi(yaofour[3]);
-  shengchengX=ceil(random(0,tiandi+0.00001))-1;
-
-
-  shengchengY=ceil(random(0,tiandi+0.00001))-1;
-
-  vertpos4=[
-    fullgua[tiandi][shengchengX][0],
-    fullgua[tiandi][shengchengY][1],
-  ]
-
-
-
-
-  for (let k=0;k<aa;k++){
-
-    tiandi=ceil(random(0,1)*10)-1;
-    shengchengX=ceil(random(0,tiandi+0.00001))-1;
-
-
-    shengchengY=ceil(random(0,tiandi+0.00001))-1;
-
-    x1 = fullgua[tiandi][shengchengX][0]
-    y1= fullgua[tiandi][shengchengY][1]
-// console.log(tiandi,shengchengX,shengchengY)
-//     x1=100
-//     y1=100
-    push()
-    //translate(random(0,300),random(300,600))
-
-
-
-    //console.log(vertpos4)
-    carve2(x1,y1,shapesize,0,vertpos1,vertpos2,vertpos3,vertpos4)
-    carve2(x1,y1,shapesize,0,vertpos1,vertpos2,vertpos3,vertpos4)
-    carve2(x1,y1,shapesize,0,vertpos1,vertpos2,vertpos3,vertpos4)
-    carve2(x1,y1,shapesize,0,vertpos1,vertpos2,vertpos3,vertpos4)
-
-
-
-    // carve2(x1,y1,shapesize,0,vertpos1,vertpos2,vertpos3,vertpos4)
-    // // carve2(x1,y1,shapesize,0,vertpos1,vertpos2,vertpos3,vertpos4)
-    // carve2(x1,y1,shapesize,0,vertpos1,vertpos2,vertpos3,vertpos4)
-    //
-    // carve2(x1,y1,shapesize,0,vertpos1,vertpos2,vertpos3,vertpos4)
-    //
-    // carve2(x1,y1,shapesize,0,vertpos1,vertpos2,vertpos3,vertpos4)
-    //
-    // carve2(x1,y1,shapesize,0,vertpos1,vertpos2,vertpos3,vertpos4)
-    //
-
-
-    //  carve2(x1,y1,shapesize,0)
-    pop()
-    //	carve2(x1,y1,shapesize,0)
-
-    //print(k)
-  }
-
-
-  drawFrames(random([colors.sand2]),1)
-  drawFrames(random([colors.sand1,colors.sand1,colors.sand1,colors.sand1,colors.sand2]),1)
-  drawFrames(random([colors.sand1,colors.sand1,colors.sand1,colors.sand1,colors.sand1]),1)
-  drawFrames(random([colors.sand1,colors.sand1,colors.sand1,colors.sand1,colors.sand1]),1)
-
-
-// console.log(x,y)
-  pos=[x,y]
-  bb=random([4,8,16])
-  for (let k=0;k<bb;k++){
-    shengchengX=ceil(random(0,tiandi+0.00001))-1;
-
-
-    shengchengY=ceil(random(0,tiandi+0.00001))-1;
-
-    x1 = fullgua[tiandi][shengchengX][0]
-    y1= fullgua[tiandi][shengchengY][1]
-    push()
-    pos=carve(x1,y1,vertpos1,vertpos2,vertpos3,vertpos4)
-    //console.log(pos)
-    pop()
-  }
-  posgras=[random(100,1900),random(100,1900)]
-  for (let k=0;k<1;k++){
-    push()
-    //rotate(random(0,PI/12))
-     //translate(random(1330,1500),random(530,800))
-    posgras=carve3(posgras[0],posgras[1])
-    pop()
-  }
-
-
-
-  tiandi=gettiandi(yaofour[0]);
-
-  //tiandi=ceil(random(0,1)*10)-1;
-  shengchengX=ceil(random(0,tiandi+0.00001))-1;
-
-
-  shengchengY=ceil(random(0,tiandi+0.00001))-1;
-
-  vertpos1=[
-    fullgua[tiandi][shengchengX][0],
-    fullgua[tiandi][shengchengY][1],
+  vertpos1next=[
+    fullgua[tiandi][(shengchengX+1) % (tiandi+1)][0],
+    fullgua[tiandi][(shengchengY+1) % (tiandi+1)][1],
   ]
 
   tiandi=gettiandi(yaofour[1]);
@@ -501,6 +382,11 @@ console.log(yaofour)
     fullgua[tiandi][shengchengY][1],
   ]
 
+  vertpos2next=[
+    fullgua[tiandi][(shengchengX+1) % (tiandi+1)][0],
+    fullgua[tiandi][(shengchengY+1) % (tiandi+1)][1],
+  ]
+
   tiandi=gettiandi(yaofour[2]);
   shengchengX=ceil(random(0,tiandi+0.00001))-1;
 
@@ -512,50 +398,61 @@ console.log(yaofour)
     fullgua[tiandi][shengchengY][1],
   ]
 
+  vertpos3next=[
+    fullgua[tiandi][(shengchengX+1) % (tiandi+1)][0],
+    fullgua[tiandi][(shengchengY+1) % (tiandi+1)][1],
+  ]
+
   tiandi=gettiandi(yaofour[3]);
   shengchengX=ceil(random(0,tiandi+0.00001))-1;
+shengchengY=ceil(random(0,tiandi+0.00001))-1;
 
 
-  shengchengY=ceil(random(0,tiandi+0.00001))-1;
 
   vertpos4=[
     fullgua[tiandi][shengchengX][0],
     fullgua[tiandi][shengchengY][1],
   ]
 
+  vertpos4next=[
+    fullgua[tiandi][(shengchengX+1) % (tiandi+1)][0],
+    fullgua[tiandi][(shengchengY+1) % (tiandi+1)][1],
+  ]
 
 
-x1 = fullgua[tiandi][shengchengX][0]
-y1= fullgua[tiandi][shengchengY][1]
 
-cc=random(0,16-bb)
-console.log(aa,bb,cc)
-  for (let k=0;k<cc;k++){
+  points=[
+    [vertpos1[0],vertpos1[1]],
+      [vertpos2[0],vertpos2[1]],
+        [vertpos4[0],vertpos4[1]],
+        //  [vertpos4[0],vertpos4[1]],
+  ];
 
-    push()
-    //translate(random(0,600),random(0,600))
-    pos=carve(x1,y1,vertpos1,vertpos2,vertpos3,vertpos4)
-    pop()
+    rc.polygon(points, {
+      fill: random([colors.body2,colors.body1,colors.sea2,colors.sea1,colors.sand2]),
+      fillStyle: random(["hachure"]),
+      fillWeight: 10*random(0.05,0.1),
+      hachureAngle: random(0,180),
+      stroke: "transparent",
+    });
 
+    points=[
+      [vertpos1next[0],vertpos1next[1]],
+        [vertpos2next[0],vertpos2next[1]],
+          [vertpos4next[0],vertpos4next[1]],
+          //  [vertpos4[0],vertpos4[1]],
+    ];
 
-    //print(k)
-  }
+      rc.polygon(points, {
+        fill: random([colors.body2,colors.body1,colors.sea2,colors.sea1,colors.sand2]),
+        fillStyle: random(["hachure"]),
+        fillWeight: 10*random(0.05,0.1),
+        hachureAngle: random(0,180),
+        stroke: "transparent",
+      });
 
+  drawGate(vertpos1,vertpos2,vertpos3)
 
-  drawFlower(colors.sand1,1,y1+600)
-
-
-  // drawFrames(random([colors.sand1,colors.sand1,colors.sand1,colors.sand1,colors.sand1]),1)
-  //drawFrames(random([colors.sand1,colors.sand1,colors.sand1,colors.sand1,colors.sand1]),1)
-  //drawFrames(random([colors.sand1,colors.sand1,colors.sand1,colors.sand1,colors.sand2]),1)
-
-  // drawFrames(random([colors.sand1,colors.sand2]),1)
-  // drawFrames(random([colors.sand1,colors.sand2]),1)
-  // drawFrames(random([colors.sand1,colors.sand2]),1)
-  //
-  //
-  // drawFrames(random([colors.sand1,colors.sand2]),1)
-  // drawFrames(random([colors.sand1,colors.sand2]),1)
 
 }
 
@@ -1109,91 +1006,95 @@ function carve3(x,y){
 
 function drawhetu(){
   raddd=600;
+  chengtu_centre=[1800,3200];
   dishichengtu=[
-    [1500+raddd*cos(1*2*PI/10),1500+raddd*sin(1*2*PI/10)],
-    [1500+raddd*cos(2*2*PI/10),1500+raddd*sin(2*2*PI/10)],
-    [1500+raddd*cos(3*2*PI/10),1500+raddd*sin(3*2*PI/10)],
-    [1500+raddd*cos(4*2*PI/10),1500+raddd*sin(4*2*PI/10)],
-    [1500+raddd*cos(5*2*PI/10),1500+raddd*sin(5*2*PI/10)],
-    [1500+raddd*cos(6*2*PI/10),1500+raddd*sin(6*2*PI/10)],
-    [1500+raddd*cos(7*2*PI/10),1500+raddd*sin(7*2*PI/10)],
-    [1500+raddd*cos(8*2*PI/10),1500+raddd*sin(8*2*PI/10)],
-    [1500+raddd*cos(9*2*PI/10),1500+raddd*sin(9*2*PI/10)],
-    [1500+raddd*cos(10*2*PI/10),1500+raddd*sin(10*2*PI/10)],
+    [chengtu_centre[0]+raddd*cos(1*2*PI/10),chengtu_centre[1]+1.8*raddd*sin(1*2*PI/10)],
+    [chengtu_centre[0]+raddd*cos(2*2*PI/10),chengtu_centre[1]+1.8*raddd*sin(2*2*PI/10)],
+    [chengtu_centre[0]+raddd*cos(3*2*PI/10),chengtu_centre[1]+1.8*raddd*sin(3*2*PI/10)],
+    [chengtu_centre[0]+raddd*cos(4*2*PI/10),chengtu_centre[1]+1.8*raddd*sin(4*2*PI/10)],
+    [chengtu_centre[0]+raddd*cos(5*2*PI/10),chengtu_centre[1]+1.8*raddd*sin(5*2*PI/10)],
+    [chengtu_centre[0]+raddd*cos(6*2*PI/10),chengtu_centre[1]+1.8*raddd*sin(6*2*PI/10)],
+    [chengtu_centre[0]+raddd*cos(7*2*PI/10),chengtu_centre[1]+1.8*raddd*sin(7*2*PI/10)],
+    [chengtu_centre[0]+raddd*cos(8*2*PI/10),chengtu_centre[1]+1.8*raddd*sin(8*2*PI/10)],
+    [chengtu_centre[0]+raddd*cos(9*2*PI/10),chengtu_centre[1]+1.8*raddd*sin(9*2*PI/10)],
+    [chengtu_centre[0]+raddd*cos(10*2*PI/10),chengtu_centre[1]+1.8*raddd*sin(10*2*PI/10)],
   ];
 
   tianwushengtu=[
-    [1200,1500],
-    [1500,1200],
-    [1500,1500],
-    [1800,1500],
-    [1500,1800],
+    [chengtu_centre[0]-300,chengtu_centre[1]],
+    [chengtu_centre[0],chengtu_centre[1]-500],
+    [chengtu_centre[0],chengtu_centre[1]],
+    [chengtu_centre[0]+300,chengtu_centre[1]],
+    [chengtu_centre[0],chengtu_centre[1]+500],
   ];
 
   tianyishengshui=[
-    [1500,2500]
+    [chengtu_centre[0],chengtu_centre[1]+2000]
   ];
 
-  widsix=350
-
+  widsix=500;
+bottom_edge=2800;
   diliuchengshui=[
-    [1500-2.5*widsix,3000],
-    [1500-1.5*widsix,3000],
-    [1500-0.5*widsix,3000],
-    [1500+0.5*widsix,3000],
-    [1500+1.5*widsix,3000],
-    [1500+2.5*widsix,3000],
+    [chengtu_centre[0]-2.5*widsix,chengtu_centre[1]+bottom_edge],
+    [chengtu_centre[0]-1.5*widsix,chengtu_centre[1]+bottom_edge],
+    [chengtu_centre[0]-0.5*widsix,chengtu_centre[1]+bottom_edge],
+    [chengtu_centre[0]+0.5*widsix,chengtu_centre[1]+bottom_edge],
+    [chengtu_centre[0]+1.5*widsix,chengtu_centre[1]+bottom_edge],
+    [chengtu_centre[0]+2.5*widsix,chengtu_centre[1]+bottom_edge],
   ];
 
+left_edge=200;
+wid8=370;
   dibachengmu=[
-    [1,400],
-    [1,700],
-    [1,1000],
-    [1,1350],
-    [1,1650],
-    [1,1950],
-    [1,2250],
-    [1,2650],
+    [left_edge,chengtu_centre[1]-7*wid8],
+    [left_edge,chengtu_centre[1]-5*wid8],
+    [left_edge,chengtu_centre[1]-3*wid8],
+    [left_edge,chengtu_centre[1]-wid8],
+    [left_edge,chengtu_centre[1]+wid8],
+    [left_edge,chengtu_centre[1]+3*wid8],
+    [left_edge,chengtu_centre[1]+5*wid8],
+    [left_edge,chengtu_centre[1]+7*wid8],
   ];
 
   tiansanshengmu=[
-    [501,1200],
-    [501,1500],
-    [501,1800],
+    [left_edge+400,chengtu_centre[1]-4.6*wid8],
+    [left_edge+400,chengtu_centre[1]],
+    [left_edge+400,chengtu_centre[1]+4.6*wid8],
   ];
-
+wid6=450;
   tianqichenghuo=[
-    [600,1],
-    [900,1],
-    [1200,1],
-    [1500,1],
-    [1800,1],
-    [2100,1],
-    [2400,1],
+    [chengtu_centre[0]-3*wid6,200],
+    [chengtu_centre[0]-2*wid6,200],
+    [chengtu_centre[0]-wid6,200],
+    [chengtu_centre[0],200],
+    [chengtu_centre[0]+wid6,200],
+    [chengtu_centre[0]+2*wid6,200],
+    [chengtu_centre[0]+3*wid6,200],
   ];
 
   diershenghuo=[
-    [1500-250,501],
-    [1500+250,501]
+    [chengtu_centre[0]-400,801],
+    [chengtu_centre[0]+400,801]
   ];
-  widnine=280
+  widnine=660
+  right_edge=3400
   tianjiuchengjin=[
-    [3000,1500-4*widnine],
-    [3000,1500-3*widnine],
-    [3000,1500-2*widnine],
-    [3000,1500-1*widnine],
-    [3000,1500],
-    [3000,1500+1*widnine],
-    [3000,1500+2*widnine],
-    [3000,1500+3*widnine],
-    [3000,1500+4*widnine],
+    [right_edge,chengtu_centre[1]-4*widnine],
+    [right_edge,chengtu_centre[1]-3*widnine],
+    [right_edge,chengtu_centre[1]-2*widnine],
+    [right_edge,chengtu_centre[1]-1*widnine],
+    [right_edge,chengtu_centre[1]],
+    [right_edge,chengtu_centre[1]+1*widnine],
+    [right_edge,chengtu_centre[1]+2*widnine],
+    [right_edge,chengtu_centre[1]+3*widnine],
+    [right_edge,chengtu_centre[1]+4*widnine],
   ];
 
   disishengjin=[
-    [2500,1050],
-    [2500,1350],
-    [2500,1650],
-    [2500,1950],
+    [right_edge-widnine,chengtu_centre[1]-2.4*widnine],
+    [right_edge-widnine,chengtu_centre[1]-0.8*widnine],
+    [right_edge-widnine,chengtu_centre[1]+0.8*widnine],
+    [right_edge-widnine,chengtu_centre[1]+2.4*widnine],
   ];
 
   rc.polygon(dishichengtu,{
