@@ -3,7 +3,7 @@ function guarotation(fullgua,yaofour){
   let Array2D = (r,c) => [...Array(r)].map(x=>Array(c).fill(0));
   let vertpos = Array2D(4,8);
 
-
+  shiftstep=random([1,2,3,4,5,6,7])
   let tiandi=[];
   for (k=0;k<4;k++){
     //k fourgua
@@ -15,7 +15,7 @@ function guarotation(fullgua,yaofour){
 
     shengchengY=ceil(random(0,tiandi[k]+0.00001))-1;
 
-    shiftstep=random([1,2,3,4,5,6,7])
+
     for (p=0;p<8;p++){
       //p shifting
       vertpos[k][p]=[
@@ -29,7 +29,7 @@ function guarotation(fullgua,yaofour){
     points=[
       [vertpos[0][p][0],vertpos[0][p][1]],
       [vertpos[1][p][0],vertpos[1][p][1]],
-      //  [vertpos[2][p][0],vertpos[2][p][1]],
+      // [vertpos[2][p][0],vertpos[2][p][1]],
       [vertpos[3][p][0],vertpos[3][p][1]],
     ];
 
@@ -68,6 +68,7 @@ function fractalquaqua(fullgua,yaofour){
 
 
   let tiandi=[];
+    shiftstep=random([1,2,3,4,5,6,7])
   for (k=0;k<4;k++){
     //k fourgua
     tiandi[k]=gettiandi(yaofour[k]);
@@ -78,7 +79,7 @@ function fractalquaqua(fullgua,yaofour){
 
     shengchengY=ceil(random(0,tiandi[k]+0.00001))-1;
 
-    shiftstep=random([1,2,3,4,5,6,7])
+
     for (p=0;p<8;p++){
 
       //p shifting
@@ -92,32 +93,57 @@ function fractalquaqua(fullgua,yaofour){
 
   for (i=0;i<8;i++){
 
-    points=[
+    pointss=[
       [vertpos[0][i][0],vertpos[0][i][1]],
       [vertpos[1][i][0],vertpos[1][i][1]],
-      //  [vertpos[2][p][0],vertpos[2][p][1]],
+      [vertpos[2][i][0],vertpos[2][i][1]],
       [vertpos[3][i][0],vertpos[3][i][1]],
     ];
 
+//console.log(pointss)
 
+wiggle=0;
+noFill()
     push()
-    translate(points[0][0]-100,points[0][1]-100)
+    translate(pointss[0][0]-wiggle,pointss[0][1]-wiggle)
     scale(12.9/pow(i,4),12.9/pow(i,4))
+    strokeWeight(random(1,50))
+    circle(pointss[0][0]-wiggle,pointss[0][1]-wiggle,1500)
     guarotation(fullgua,yaofour);
     pop()
 
     push()
-    translate(points[1][0]-100,points[1][1]-100)
+    translate(pointss[1][0]-wiggle,pointss[1][1]-wiggle)
     scale(12.9/pow(i,4),12.9/pow(i,4))
+strokeWeight(random(1,50))
+    circle(pointss[0][0]-wiggle,pointss[0][1]-wiggle,1500)
     guarotation(fullgua,yaofour);
     pop()
 
     push()
-    translate(points[2][0]-100,points[2][1]-100)
-  scale(12.9/pow(i,4),12.9/pow(i,4))
+    translate(pointss[2][0]-wiggle,pointss[2][1]-wiggle)
+    scale(12.9/pow(i,4),12.9/pow(i,4))
+    strokeWeight(random(1,50))
+    circle(pointss[0][0]-wiggle,pointss[0][1]-wiggle,1500)
     guarotation(fullgua,yaofour);
     pop()
 
+    push()
+    translate(pointss[3][0]-wiggle,pointss[3][1]-wiggle)
+    scale(12.9/pow(i,4),12.9/pow(i,4))
+  strokeWeight(random(1,50))
+    circle(pointss[0][0]-wiggle,pointss[0][1]-wiggle,1500)
+    guarotation(fullgua,yaofour);
+    pop()
+
+    // rc.polygon(pointss, {
+    //   fill: random([colors.body2,colors.body1,colors.sea2,colors.sea1,colors.sand2]),
+    // fillStyle: random(['dashed']),
+    // fillWeight: 0.01*random(1.5,3.5),
+    // hachureAngle: random(90,90),
+    // stroke: "solid",
+    //   bowing: 100, stroke: colors.body2, strokeWidth: 1,
+    // });
 
   }
 

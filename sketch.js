@@ -1,6 +1,7 @@
 let seasonpicker= Xrandom(0,1 );
 let rc;
-let yao=[0,0,0,0,0,0];
+let yao1=[0,0,0,0,0,0];
+let yao2=[0,0,0,0,0,0];
 let yaoone=Xrandom(0,1);
 let yaotwo=Xrandom(0,1);
 let yaothree=Xrandom(0,1);
@@ -15,39 +16,56 @@ function Xrandom(x,y){
   return (y-x)*fxrand()+x;
 }
 
-if (yaoone<0.46){
-  yao[0]=0;
+let odds=0.5;
+
+if (yaoone<odds){
+  yao1[0]=0;
 }else{
-  yao[0]=1;
+  yao1[0]=1;
 };
 
-if (yaotwo<0.46){
-  yao[1]=0;
+if (yaotwo<odds){
+  yao1[1]=0;
 }else{
-  yao[1]=1;
+  yao1[1]=1;
 }
 
-if (yaothree<0.46){
-  yao[2]=0;
+if (yaothree<odds){
+  yao1[2]=0;
 }else{
-  yao[2]=1;
+  yao1[2]=1;
 }
 
-if (yao4<0.46){
-  yao[3]=0;
+if (yao4<odds){
+  yao1[3]=0;
 }else{
-  yao[3]=1;
+  yao1[3]=1;
 }
 
-if (yaofive<0.46){
-  yao[4]=0;
+if (yaofive<odds){
+  yao1[4]=0;
 }else{
-  yao[4]=1;
+  yao1[4]=1;
 }
-if (yaosix<0.46){
-  yao[5]=0;
+if (yaosix<odds){
+  yao1[5]=0;
 }else{
-  yao[5]=1;
+  yao1[5]=1;
+}
+
+
+console.log(yao1)
+
+if (yao1[0]==yao1[1] && yao1[1]==yao1[2] && yao1[1]==1){
+  yao1[1]=0;
+}else if (yao1[0]==yao1[1] && yao1[1]==yao1[2] && yao1[1]==0){
+  yao1[1]=1;
+}
+
+if (yao1[3]==yao1[4] && yao1[4]==yao1[5] && yao1[5]==1){
+  yao1[5]=0;
+}else if (yao1[3]==yao1[4] && yao1[4]==yao1[5] && yao1[5]==0){
+    yao1[5]=1;
 }
 
 
@@ -348,9 +366,9 @@ function draw() {
     dishichengtu
   ];
 
-console.log(yao)
-yaofour=fourgua(yao)
-console.log(yaofour)
+console.log(yao1)
+yaofour1=fourgua(yao1)
+console.log(yaofour1)
 
 
 //   tiandi=gettiandi(yaofour[0]);
@@ -418,8 +436,15 @@ console.log(yaofour)
 //     fullgua[tiandi][(shengchengX+1) % (tiandi+1)][0],
 //     fullgua[tiandi][(shengchengY+1) % (tiandi+1)][1],
 //   ]
-fractalquaqua(fullgua,yaofour);
-//guarotation(fullgua,yaofour)
+
+
+ fractalquaqua(fullgua,yaofour1);
+// fractalquaqua(fullgua,yaofour1 || [1,0,1,0,1,0]);
+
+// guarotation(fullgua,yaofour1 || ![1,0,1,0,1,0])
+// console.log(yaofour1 || [1,0,1,0,1,0])
+//guarotation(fullgua,yaofour1)
+
 //vertpos=guarotation(fullgua,yaofour);
 
 
@@ -644,334 +669,9 @@ function drawFrames(coloring,thick){
   // });
 }
 
-function carve(x,y,vertpos1,vertpos2,vertpos3,vertpos4){
-
-  let width =2800
-  let height = 2800
-
-  left_x = int(width * -0.5)
-  right_x = int(width * 1.5)
-  top_y = int(height * -0.5)
-  bottom_y = int(height * 1.5)
-  resolution = int(width * 0.01)
-
-
-  num_columns = 3*int((right_x - left_x) / resolution)
-  num_rows = 3*int((bottom_y - top_y) / resolution)
-  //	print('num_columns'+ num_columns)
-  //	print('num_rows'+ num_rows)
-
-
-  // initialise field
-  let Array2D = (r,c) => [...Array(r)].map(x=>Array(c).fill(0));
-  let m = Array2D(num_columns,num_rows);
-
-  //print("m length "+m.length)
-
-  gain=int(random(-3.1,3.1));
-  bend=random(0.12,0.13);
-  offset=random(0,num_rows)
-  if (random(0,1)<0.99) {
-    quantum=1;
-    for (let column=0; column<num_columns; column++) {
-      for (row=0; row<num_rows; row++) {
-
-        angle = (quantum*(row-offset-gain*bend*column) / (num_rows*bend))/quantum * PI*gain
-        // print('angle'+angle)
-        m[column][row] = angle
-      }
-    }
-  }
-  else{
-    quantum=random(2,3);
-    for (let column=0; column<num_columns; column++) {
-      for (row=0; row<num_rows; row++) {
-
-        angle = int(quantum*((row-offset-gain*bend*column) / (num_rows*bend))/quantum) * PI*gain
-        // print('angle'+angle)
-        m[column][row] = angle
-      }
-    }
-  }
-
-  //print("angle"+m[100][100])
-
-  x = 100+random(500,1900)
-  y = 100+random(500,1900)
-  let num_steps=100
-
-  strokeWeight(0.1)
-  dice=random(0,1)
-  if (dice<0.95){
-    noFill()
-    stroke(random([coloring.color1,coloring.color2,coloring.color3]))
-  }
-  else if (dice>0.999995){
-    //fill(random([coloring.color1,coloring.color2,coloring.color3]))
-    noStroke();
-    stroke(random([coloring.color1,coloring.color2,coloring.color3]))
-
-    noFill()
-  }
-  else {
-    //fill(random([coloring.color1,coloring.color2,coloring.color3]))
-    stroke(random([coloring.color1,coloring.color2,coloring.color3]))
-    noFill()
-  }
-
-  //vertex(100,100)
-  //vertex(1100,1300)
-  beginShape()
-  let dice2=random(0,1)
-  shapesize=random(330,500);
-  stepsize=random(0.1,0.3);
-  curvelegnth=50+random(250,400);
-  stroke(random([coloring.color1,coloring.color2,coloring.color3]))
-  for (k=0;k<curvelegnth;k+=1+random(0,3)) {
-    strokeWeight(0.1+random(0,0.5))
-
-
-    x_offset = x - left_x
-    y_offset = y - top_y
-    if (x_offset<4500 && y_offset< 4500 && x_offset>0 && y_offset>0  ) {
-      column_index = int(x_offset / resolution)
-      row_index = int(y_offset / resolution)
-      //	print(column_index,row_index)
-      grid_angle = m[column_index][row_index]
-      x_step = stepsize*resolution * cos(grid_angle)
-      y_step = stepsize*resolution * sin(grid_angle)
-      //	vertex(x, y)
-      strokeWeight(0.1)
-      //draw shapes
-      if (dice2>0.50){
-        stroke(random([coloring.color1,coloring.color2,coloring.color3]))
-        noFill()
-        //rect(x,y,shapesize,shapesize)
-        vertex(x, y)
-        //      strokeWeight(0.1/k+0.1/(curvelegnth-k))
-        line(x,y,vertpos1[0],vertpos1[1])
-        line(x,y,vertpos2[0],vertpos2[1])
-        line(x,y,vertpos3[0],vertpos3[1])
-        line(x,y,vertpos4[0],vertpos4[1])
-      }
-      else if (dice2<0.20 && dice2>0.1){
-        stroke(random([coloring.color1,coloring.color2,coloring.color3]))
-        //fill(random([coloring.color1,coloring.color2,coloring.color3]))
-        //	ellipse(x,y,shapesize,shapesize)
-        //	rect(x,y,shapesize,shapesize)
-        vertex(x, y)
-        //      strokeWeight(0.1/k+0.1/(curvelegnth-k))
-        line(x,y,vertpos1[0],vertpos1[1])
-        line(x,y,vertpos2[0],vertpos2[1])
-        line(x,y,vertpos3[0],vertpos3[1])
-        line(x,y,vertpos4[0],vertpos4[1])
 
 
 
-
-      }
-      else if (dice2<0.30 && dice2>0.2){
-        stroke(random([coloring.color1,coloring.color2,coloring.color3]))
-        //	fill(255)
-        //	fill(random([coloring.color1,coloring.color2,coloring.color3]))
-        //	ellipse(x,y,shapesize,shapesize)
-        noFill()
-        rect(x,y,shapesize,random(1,1)*shapesize)
-        vertex(x, y)
-        //      strokeWeight(0.1/k+0.1/(curvelegnth-k))
-        line(x,y,vertpos1[0],vertpos1[1])
-        line(x,y,vertpos2[0],vertpos2[1])
-        line(x,y,vertpos3[0],vertpos3[1])
-        line(x,y,vertpos4[0],vertpos4[1])
-
-      }
-      else if (dice2<0.9){
-        stroke(random([coloring.color1,coloring.color2,coloring.color3]))
-        //				fill(0)
-        noFill()
-        //strokeWeight(0.1/k+0.1/(curvelegnth-k))
-        vertex(x, y)
-        line(x,y,vertpos1[0],vertpos1[1])
-        line(x,y,vertpos2[0],vertpos2[1])
-        line(x,y,vertpos3[0],vertpos3[1])
-        line(x,y,vertpos4[0],vertpos4[1])
-
-
-      }
-      else {
-        //	noFill()
-        stroke(random([coloring.color1,coloring.color2,coloring.color3]))
-        //fill(0)
-        noFill()
-        strokeWeight(0.2)
-        rect(x,y,random(1,1)*shapesize,shapesize)
-        // line(x,y,vertpos1[0],vertpos1[1])
-        // line(x,y,vertpos2[0],vertpos2[1])
-        //	vertex(x, y)
-
-      }
-      //
-      //pop()
-
-      x = x + x_step+int(random(0,1))
-      y = y + y_step+int(random(0,1))
-
-
-      circle(x,y,3)
-    }
-    stroke(random([coloring.color1,coloring.color2,coloring.color3]))
-    noFill()
-    strokeWeight(0.1)
-    endShape()
-  }
-  posi=[x,y];
-  return posi
-}
-
-
-
-
-function carve3(x,y){
-  let width =2500
-  let height = 2500
-  left_x = int(width * -0.5)
-  right_x = int(width * 1.5)
-  top_y = int(height * -0.5)
-  bottom_y = int(height * 1.5)
-  resolution = int(width * 0.01)
-  num_columns = 3*int((right_x - left_x) / resolution)
-  num_rows = 3*int((bottom_y - top_y) / resolution)
-  //	print('num_columns'+ num_columns)
-  //	print('num_rows'+ num_rows)
-  // initialise field
-  let Array2D = (r,c) => [...Array(r)].map(x=>Array(c).fill(0));
-  let m = Array2D(num_columns,num_rows);
-  //print("m length "+m.length)
-  gain=int(random(-3.1,3.1));
-  bend=random(0.012,0.013);
-  offset=random(0,num_rows)
-  if (random(0,1)<0.9) {
-    quantum=1;
-    for (let column=0; column<num_columns; column++) {
-      for (row=0; row<num_rows; row++) {
-        angle = (quantum*(row-offset-gain*bend*column) / (num_rows*bend))/quantum * PI*gain
-        // print('angle'+angle)
-        m[column][row] = angle
-      }
-    }
-  }
-  else{
-    quantum=random(2,3);
-    for (let column=0; column<num_columns; column++) {
-      for (row=0; row<num_rows; row++) {
-        angle = int(quantum*((row-offset-gain*bend*column) / (num_rows*bend))/quantum) * PI*gain
-        // print('angle'+angle)
-        m[column][row] = angle
-      }
-    }
-  }
-  //print("angle"+m[100][100])
-  tiandi=random([0,2,1,3])
-  shengchengX=ceil(random(0,tiandi+0.00001))-1;
-
-
-  shengchengY=ceil(random(0,tiandi+0.00001))-1;
-
-  x = fullgua[tiandi][shengchengX][0]
-  y= fullgua[tiandi][shengchengY][1]
-  let num_steps=100
-  strokeWeight(0.1)
-  dice=random(0,1)
-  if (dice<0.95){
-    noFill()
-    stroke(random([coloring.color1,coloring.color2,coloring.color3]))
-  }
-  else if (dice>0.999995){
-    //fill(random([coloring.color1,coloring.color2,coloring.color3]))
-    noStroke();
-    noFill()
-  }
-  else {
-    //fill(random([coloring.color1,coloring.color2,coloring.color3]))
-    stroke(random([coloring.color1,coloring.color2,coloring.color3]))
-    noFill()
-  }
-
-  //vertex(100,100)
-  //vertex(1100,1300)
-  beginShape()
-  let dice2=random(0,1)
-  shapesize=random(330,500);
-  stepsize=random(0.1,0.3);
-  stroke(random([coloring.color1,coloring.color2,coloring.color3]))
-  for (k=0;k<50+random(25,100);k+=1+random(0,3)) {
-    strokeWeight(0.8+random(0,0.5))
-    x_offset = x - left_x
-    y_offset = y - top_y
-    if (x_offset<3100 && y_offset< 3100 && x_offset>0 && y_offset>0  ) {
-      column_index = int(x_offset / resolution)
-      row_index = int(y_offset / resolution)
-      //	print(column_index,row_index)
-      grid_angle = m[column_index][row_index]
-      x_step = stepsize*resolution * cos(grid_angle)
-      y_step = stepsize*resolution * sin(grid_angle)
-      //	vertex(x, y)
-      //draw shapes
-      if (dice2>0.50){
-        stroke(random([coloring.color1,coloring.color2,coloring.color3]))
-        noFill()
-        //		rect(x,y,shapesize,shapesize)
-        //rect(x,y,shapesize,shapesize)
-        vertex(x, y)
-      }
-      else if (dice2<0.20 && dice2>0.1){
-        stroke(random([coloring.color1,coloring.color2,coloring.color3]))
-        //fill(random([coloring.color1,coloring.color2,coloring.color3]))
-        //	ellipse(x,y,shapesize,shapesize)
-        //	rect(x,y,shapesize,shapesize)
-        //			rect(x,y,shapesize,shapesize)
-        vertex(x, y)
-
-      }
-      else if (dice2<0.30 && dice2>0.2){
-        stroke(random([coloring.color1,coloring.color2,coloring.color3]))
-        //	fill(255)
-        //	fill(random([coloring.color1,coloring.color2,coloring.color3]))
-        //	ellipse(x,y,shapesize,shapesize)
-        noFill()
-        //	rect(x,y,shapesize,random(1,1)*shapesize)
-        vertex(x, y)
-      }
-      else if (dice2<0.92){
-        //	else if (dice2<0.7){
-        stroke(random([coloring.color1,coloring.color2,coloring.color3]))
-        //				fill(0)
-        noFill()
-        vertex(x, y)
-      }
-      else {
-        //	noFill()
-        stroke(random([coloring.color1,coloring.color2,coloring.color3]))
-        //fill(0)
-        noFill()
-        rect(x,y,random(1,1)*shapesize,shapesize)
-        //	vertex(x, y)
-      }
-      //
-      //pop()
-      x = x + x_step+int(random(0,1))
-      y = y + y_step+int(random(0,1))
-      circle(x,y,3)
-    }
-    stroke(random([coloring.color1,coloring.color2,coloring.color3]))
-
-    noFill()
-    endShape()
-  }
-
-  posi=[x,y];
-  return posi
-}
 
 function drawhetu(){
   raddd=600;
