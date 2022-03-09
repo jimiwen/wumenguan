@@ -239,6 +239,7 @@ if (seasonpicker<0.25){
 
 function setup() {
   randomSeed(int(fxrand()*100000000))
+  pixelDensity(0.5)
   const canvas = createCanvas(3601, 6401);
   //angleMode(DEGREES)
   rc = rough.canvas(canvas.canvas);
@@ -254,7 +255,7 @@ function setup() {
 }
 
 function draw() {
-  //drawhetu()
+//drawhetu()
 
   let	x = 100+random(500,2800)
   let y = 100+random(500,2800)
@@ -370,83 +371,22 @@ console.log(yao1)
 yaofour1=fourgua(yao1)
 console.log(yaofour1)
 
+//drawGate([100,100],[2000,2000],[3000,3000])
 
-//   tiandi=gettiandi(yaofour[0]);
+// for (l=0;l<30;l++){
+//   for (m=0;m<20;m++){
+//   //  console.log(m)
+//     guarotation2(fullgua,yaofour1,[l*200,m*300],1)
 //
-//   //tiandi=ceil(random(0,1)*10)-1;
-//   shengchengX=ceil(random(0,tiandi+0.00001))-1;
-//
-//
-//   shengchengY=ceil(random(0,tiandi+0.00001))-1;
-//
-//   vertpos1=[
-//     fullgua[tiandi][shengchengX][0],
-//     fullgua[tiandi][shengchengY][1],
-//   ]
-//
-//   vertpos1next=[
-//     fullgua[tiandi][(shengchengX+1) % (tiandi+1)][0],
-//     fullgua[tiandi][(shengchengY+1) % (tiandi+1)][1],
-//   ]
-//
-//   tiandi=gettiandi(yaofour[1]);
-//   shengchengX=ceil(random(0,tiandi+0.00001))-1;
-//
-//
-//   shengchengY=ceil(random(0,tiandi+0.00001))-1;
-//
-//   vertpos2=[
-//     fullgua[tiandi][shengchengX][0],
-//     fullgua[tiandi][shengchengY][1],
-//   ]
-//
-//   vertpos2next=[
-//     fullgua[tiandi][(shengchengX+1) % (tiandi+1)][0],
-//     fullgua[tiandi][(shengchengY+1) % (tiandi+1)][1],
-//   ]
-//
-//   tiandi=gettiandi(yaofour[2]);
-//   shengchengX=ceil(random(0,tiandi+0.00001))-1;
-//
-//   tiandiY=ceil(random(0,1)*10)-1;
-//   shengchengY=ceil(random(0,tiandi+0.00001))-1;
-//
-//   vertpos3=[
-//     fullgua[tiandi][shengchengX][0],
-//     fullgua[tiandi][shengchengY][1],
-//   ]
-//
-//   vertpos3next=[
-//     fullgua[tiandi][(shengchengX+1) % (tiandi+1)][0],
-//     fullgua[tiandi][(shengchengY+1) % (tiandi+1)][1],
-//   ]
-//
-//   tiandi=gettiandi(yaofour[3]);
-//   shengchengX=ceil(random(0,tiandi+0.00001))-1;
-// shengchengY=ceil(random(0,tiandi+0.00001))-1;
-//
-//
-//
-//   vertpos4=[
-//     fullgua[tiandi][shengchengX][0],
-//     fullgua[tiandi][shengchengY][1],
-//   ]
-//
-//   vertpos4next=[
-//     fullgua[tiandi][(shengchengX+1) % (tiandi+1)][0],
-//     fullgua[tiandi][(shengchengY+1) % (tiandi+1)][1],
-//   ]
+//   }
+// }
 
+//drawcover(2000,6400)
+guarotation(fullgua,yaofour1)
+// fractalquaqua(fullgua,yaofour1);
+// drawcover(3000,6000)
 
- fractalquaqua(fullgua,yaofour1);
-// fractalquaqua(fullgua,yaofour1 || [1,0,1,0,1,0]);
-
-// guarotation(fullgua,yaofour1 || ![1,0,1,0,1,0])
-// console.log(yaofour1 || [1,0,1,0,1,0])
-//guarotation(fullgua,yaofour1)
-
-//vertpos=guarotation(fullgua,yaofour);
-
+ //drawcover()
 
 }
 
@@ -459,6 +399,45 @@ function exportImage() {
 function keyReleased() {
   "1" == key && exportImage()
 }
+
+
+function drawcover(lefttop,leftbottom){
+  pointcover=[
+    [0,0],
+    [lefttop,0],
+    [lefttop,leftbottom],
+    [0,leftbottom]
+  ];
+  rc.polygon(pointcover, {
+    fill: random([colors.body2,colors.body1,colors.sea2,colors.sea1,colors.sand2]),
+    fillStyle: random(["dashed",]),
+    fillWeight: 10*random(0.05,0.1),
+    hachureAngle: random(70,80),
+    stroke: "transparent",
+  });
+  rc.polygon(pointcover, {
+    fill: random([colors.body2,colors.body1,colors.sea2,colors.sea1,colors.sand2]),
+    fillStyle: random(["zigzag"]),
+    fillWeight: 5*random(0.05,0.1),
+    hachureAngle: random(10,180),
+    stroke: "transparent",
+  });
+  rc.polygon(pointcover, {
+    fill: random([colors.body2,colors.body1,colors.sea2,colors.sea1,colors.sand2]),
+    fillStyle: random(["dashed"]),
+    fillWeight: 10*random(0.05,0.1),
+    hachureAngle: random(170,180),
+    stroke: "transparent",
+  });
+  rc.polygon(pointcover, {
+    fill: random([colors.body2,colors.body1,colors.sea2,colors.sea1,colors.sand2]),
+    fillStyle: random(["dashed"]),
+    fillWeight: 1*random(0.05,0.1),
+    hachureAngle: random(170,180),
+    stroke: "transparent",
+  });
+}
+
 
 function gettiandi(yaofour){
   if (yaofour=="kun") return 0;
