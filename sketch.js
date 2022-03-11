@@ -8,7 +8,6 @@ let yaothree=Xrandom(0,1);
 let yao4=Xrandom(0,1);
 let yaofive=Xrandom(0,1);
 let yaosix=Xrandom(0,1);
-let strokenumber=Xrandom(0,1);
 
 
 
@@ -70,40 +69,27 @@ if (yao1[3]==yao1[4] && yao1[4]==yao1[5] && yao1[5]==1){
 
 
 
-if (strokenumber<0.3){
-  aa=3;
-}else if (strokenumber<0.85){
-  aa=6;
-}else{
-  aa=9;
-}
 
 
 
 window.$fxhashFeatures = {
-  "Being": getMoodStyle(seasonpicker),
+  "Palette": getMoodStyle(seasonpicker),
   "Upper Gua": getLowerGuaStyle(yaoone,yaotwo,yaothree),
   "Lower Gua": getLowerGuaStyle(yao4,yaofive,yaosix),
-  "Number of?:": getstrokeNum(strokenumber)
 }
 
 
  console.log(getMoodStyle(seasonpicker))
 console.log(getLowerGuaStyle(yaoone,yaotwo,yaothree))
  console.log(getLowerGuaStyle(yao4,yaofive,yaosix))
- console.log(getstrokeNum(strokenumber))
 
-function getstrokeNum(value){
-  if (value<0.3) return '3';
-  else if (value<0.85) return '6'
-  else return '12'
-}
+
 
 function getMoodStyle(value){
-  if (value<0.25) return '魂 intution';
-  else if (value<0.50) return '我 id'
-  else if (value<0.75) return '神 spirit'
-  else return '魄 reflection'
+  if (value<0.40) return 'Bright';
+  else if (value<0.45) return 'Orange'
+  else if (value<0.70) return 'Pink'
+  else return 'Pastel'
 }
 
 
@@ -129,21 +115,21 @@ let yaoL=[0 ,0 ,0];
   }
 
   if (yaoL[0]==0 && yaoL[1]==0 && yaoL[2]==0){
-  return "kun earth"
+  return "000"
 }else if (yaoL[0]==1 && yaoL[1]==0 && yaoL[2]==1){
-    return "li fire"
+    return "101"
   } else if (yaoL[0]==0 && yaoL[1]==1 && yaoL[2]==1){
-    return "xun wind"
+    return "011"
   } else if (yaoL[0]==1 && yaoL[1]==0 && yaoL[2]==0){
-    return "zhen thunder"
+    return "100"
   } else if (yaoL[0]==0 && yaoL[1]==0 && yaoL[2]==1){
-    return "gen mountain"
+    return "001"
   } else if (yaoL[0]==0 && yaoL[1]==1 && yaoL[2]==0){
-    return "kan water"
+    return "010"
   } else if (yaoL[0]==1 && yaoL[1]==1 && yaoL[2]==1){
-    return "qian heaven"
+    return "111"
   } else if (yaoL[0]==1 && yaoL[1]==1 && yaoL[2]==0){
-    return "dui swamp"
+    return "110"
   }else {
     return "error"
   }
@@ -165,42 +151,7 @@ if (seasonpicker<0.4){
     body1:'#2f68ad'
   };
 
-  // // baby blue baby purple
-  // colors = {
-  //   main: "693793",
-  //   bg: "#5323d1",
-  //   sea1: '#c892c4',
-  //   sea2: '#6fc0d9',
-  //   sand1:'#d35c61',
-  //   sand2:'#51423c',
-  //   body2:'#623c94',
-  //   body1:'#5ffaf3'
-  // };
 
-  // // baby blue baby pink
-  // colors = {
-  //   main: "#932793",
-  //   bg: "#93lsdj",
-  //   sea1: '#f892c4',
-  //   sea2: '#0fc0d9',
-  //   sand1:'#f35c61',
-  //   sand2:'#f2483c',
-  //   body2:'#f69c94',
-  //   body1:'#f4faf3'
-  // };
-
-
-  // //aqua
-  // colors = {
-  //   main: "#423b40",
-  //   bg: "#02040a",
-  //   sea1: '#0892c4',
-  //   sea2: '#02c0d9',
-  //   sand1:'#635c61',
-  //   sand2:'#52483c',
-  //   body2:'#069c94',
-  //   body1:'#64faf3'
-  // };
 
 }else if (seasonpicker<0.45){
   //golden tiger 10%
@@ -215,31 +166,9 @@ if (seasonpicker<0.4){
     body1:'#ff8800',
   };
 
-  //summer green 5%
-  // colors = {
-  //   main: "#f7dfdf",
-  //   bg: "#692545",
-  //   sea1: '#bd112b',
-  //   sea2: '#de4573',
-  //   sand1:'#3c4d3d',
-  //   sand2:'#2d4038',
-  //   body2:'#f07832',
-  //   body1:'#edaf3b'
-  // };
 
-  // baby blue baby purple
-  // colors = {
-  //   main: "693793",
-  //   bg: "#5323d1",
-  //   sea1: '#c892c4',
-  //   sea2: '#6fc0d9',
-  //   sand1:'#d35c61',
-  //   sand2:'#51423c',
-  //   body2:'#623c94',
-  //   body1:'#5ffaf3'
-  // };
 
-}else if (seasonpicker<0.60){
+}else if (seasonpicker<0.70){
 
 
   // baby blue baby pink
@@ -273,7 +202,7 @@ if (seasonpicker<0.4){
 
 function setup() {
   randomSeed(int(fxrand()*100000000))
-  pixelDensity(0.5)
+  pixelDensity(1)
   const canvas = createCanvas(3601, 6401);
   //angleMode(DEGREES)
   rc = rough.canvas(canvas.canvas);
@@ -289,7 +218,7 @@ function setup() {
 }
 
 function draw() {
-//drawhetu()
+
 
   let	x = 100+random(500,2800)
   let y = 100+random(500,2800)
