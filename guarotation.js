@@ -172,17 +172,33 @@ function fractalquaqua(fullgua,yaofour){
     ];
 
 //console.log(pointss)
-
+wei=random([0.00025,0.0005,0.001,0.002]);
+eye_depth=random([1,2]);
 wiggle=0;
 noFill()
     push()
     translate(pointss[0][0]-wiggle,pointss[0][1]-wiggle)
-    scale(16.9/pow(i,4),16.9/pow(i,4))
-    strokeWeight(random(1000,1150))
+    scale(16.9/pow(i,4),16.9/pow(i,4));
+    strokeWeight(wei*i*random(1000,2150));
+    stroke(random([colors.body2,colors.body1,colors.sea2,colors.sea1,colors.sand2]));
       lrad=random([0.25,0.5,1,2]);
   //      fill(random([colors.body2,colors.body1,colors.sea2,colors.sea1,colors.sand2]))
   //  circle(pointss[0][0]-wiggle,pointss[0][1]-wiggle,random([0.5,2])*1500)
-  arc(pointss[0][0]-wiggle,pointss[0][1]-wiggle,lrad*1500,random([1])*lrad*1500,PI-random(0,PI), PI +random(0,PI))
+
+for (x=0;x<40;x++){
+  stroke(random([colors.body2,colors.body1,colors.sea2,colors.sea1,colors.sand2]));
+
+  arc(pointss[0][0]-wiggle,pointss[0][1]-wiggle,random([1/x,x*x])*lrad*1500,random([x,x*x])*lrad*1500,PI-random(0,PI), PI +random(0,PI))
+}
+  strokeWeight(1*i*random(1000,2150))
+  for (y=0;y<eye_depth;y++){
+    strokeWeight(1*i*random(1000,2150))
+    stroke(random([colors.body2,colors.body1,colors.sea2,colors.sea1,colors.sand2]));
+    arc(pointss[0][0]-wiggle,pointss[0][1]-wiggle,lrad*1500/(y),lrad*1500/(y),PI-random(0,PI), PI +random(0,PI))
+
+  }
+
+  strokeWeight(wei*i*random(1000,2150))
 
     guarotation(fullgua,yaofour);
     pop()
@@ -190,11 +206,26 @@ noFill()
     push()
     translate(pointss[1][0]-wiggle,pointss[1][1]-wiggle)
     scale(16.9/pow(i,4),16.9/pow(i,4))
-    strokeWeight(random(1000,1150))
-      lrad=random([0.5,2]);
+    strokeWeight(wei*i*random(1000,2150))
+      lrad=random([0.5,1,1]);
   //    fill(random([colors.body2,colors.body1,colors.sea2,colors.sea1,colors.sand2]))
   //  circle(pointss[0][0]-wiggle,pointss[0][1]-wiggle,random([0.5,2])*1500)
-  arc(pointss[0][0]-wiggle,pointss[0][1]-wiggle,lrad*1500,random([1])*lrad*1500,PI-random(0,PI), PI +random(0,PI))
+  for (x=0;x<40;x++){
+    stroke(random([colors.body2,colors.body1,colors.sea2,colors.sea1,colors.sand2]));
+
+    arc(pointss[0][0]-wiggle,pointss[0][1]-wiggle,random([1/x,x*x])*lrad*1500,random([x,x*x])*lrad*1500,PI-random(0,PI), PI +random(0,PI))
+  }
+  strokeWeight(1*i*random(1000,2150))
+
+for (y=0;y<eye_depth;y++){
+  strokeWeight(1*i*random(1000,2150))
+
+  stroke(random([colors.body2,colors.body1,colors.sea2,colors.sea1,colors.sand2]));
+  arc(pointss[0][0]-wiggle,pointss[0][1]-wiggle,lrad*1500/(y),lrad*1500/(y),PI-random(0,PI), PI +random(0,PI))
+
+}
+
+  strokeWeight(wei*i*random(1000,2150))
 
     guarotation(fullgua,yaofour);
     pop()
@@ -202,11 +233,24 @@ noFill()
     push()
     translate(pointss[2][0]-wiggle,pointss[2][1]-wiggle)
     scale(16.9/pow(i,4),16.9/pow(i,4))
-    strokeWeight(random(1000,1150));
-    lrad=random([0.5,2]);
+    strokeWeight(wei*i*random(1000,2150));
+    lrad=random([0.5,1,1]);
   //  fill(random([colors.body2,colors.body1,colors.sea2,colors.sea1,colors.sand2]))
 //    circle(pointss[0][0]-wiggle,pointss[0][1]-wiggle,random([0.5,2])*1500)
-arc(pointss[0][0]-wiggle,pointss[0][1]-wiggle,lrad*1500,random([1])*lrad*1500,PI-random(0,PI), PI +random(0,PI))
+for (x=0;x<40;x++){
+  stroke(random([colors.body2,colors.body1,colors.sea2,colors.sea1,colors.sand2]));
+
+  arc(pointss[0][0]-wiggle,pointss[0][1]-wiggle,random([1/x,x*x])*lrad*1500,random([x,x*x])*lrad*1500,PI-random(0,PI), PI +random(0,PI))
+}
+strokeWeight(1*i*random(1000,2150))
+for (y=0;y<eye_depth;y++){
+  strokeWeight(1*i*random(1000,2150))
+
+  stroke(random([colors.body2,colors.body1,colors.sea2,colors.sea1,colors.sand2]));
+  arc(pointss[0][0]-wiggle,pointss[0][1]-wiggle,lrad*1500/(y),lrad*1500/(y),PI-random(0,PI), PI +random(0,PI))
+
+}
+strokeWeight(wei*i*random(1000,2150))
 
     guarotation(fullgua,yaofour);
     pop()
@@ -214,11 +258,24 @@ arc(pointss[0][0]-wiggle,pointss[0][1]-wiggle,lrad*1500,random([1])*lrad*1500,PI
     push()
     translate(pointss[3][0]-wiggle,pointss[3][1]-wiggle)
     scale(16.9/pow(i,4),16.9/pow(i,4))
-  strokeWeight(random(1000,1150))
-    lrad=random([0.5,2]);
+  strokeWeight(wei*i*random(1000,2150))
+    lrad=random([0.5,1,1]);
     //fill(random([colors.body2,colors.body1,colors.sea2,colors.sea1,colors.sand2]))
   //circle(pointss[0][0]-wiggle,pointss[0][1]-wiggle,random([0.5,2])*1500)
-arc(pointss[0][0]-wiggle,pointss[0][1]-wiggle,lrad*1500,random([1])*lrad*1500,PI-random(0,PI), PI +random(0,PI))
+  for (x=0;x<40;x++){
+    stroke(random([colors.body2,colors.body1,colors.sea2,colors.sea1,colors.sand2]));
+
+    arc(pointss[0][0]-wiggle,pointss[0][1]-wiggle,random([1/x,x*x])*lrad*1500,random([x,x*x])*lrad*1500,PI-random(0,PI), PI +random(0,PI))
+  }
+  strokeWeight(1*i*random(1000,2150))
+  for (y=0;y<eye_depth;y++){
+    strokeWeight(1*i*random(1000,2150))
+
+    stroke(random([colors.body2,colors.body1,colors.sea2,colors.sea1,colors.sand2]));
+    arc(pointss[0][0]-wiggle,pointss[0][1]-wiggle,lrad*1500/(y),lrad*1500/(y),PI-random(0,PI), PI +random(0,PI))
+
+  }
+  strokeWeight(wei*i*random(1000,2150))
     guarotation(fullgua,yaofour);
     pop()
 

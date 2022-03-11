@@ -111,18 +111,18 @@ function getMoodStyle(value){
 function getLowerGuaStyle(yao4,yaofive,yaosix){
 let yaoL=[0 ,0 ,0];
 
-  if (yao4<0.46){
+  if (yao4<odds){
     yaoL[0]=0;
   }else{
     yaoL[0]=1;
   }
 
-  if (yaofive<0.46){
+  if (yaofive<odds){
     yaoL[1]=0;
   }else{
     yaoL[1]=1;
   }
-  if (yaosix<0.46){
+  if (yaosix<odds){
     yaoL[2]=0;
   }else{
     yaoL[2]=1;
@@ -373,18 +373,12 @@ console.log(yaofour1)
 
 //drawGate([100,100],[2000,2000],[3000,3000])
 
-// for (l=0;l<30;l++){
-//   for (m=0;m<20;m++){
-//   //  console.log(m)
-//     guarotation2(fullgua,yaofour1,[l*200,m*300],1)
-//
-//   }
-// }
 
-//drawcover(2000,6400)
-guarotation(fullgua,yaofour1)
-// fractalquaqua(fullgua,yaofour1);
-// drawcover(3000,6000)
+
+//drawcover(3601, 6401)
+//guarotation(fullgua,yaofour1)
+ fractalquaqua(fullgua,yaofour1);
+drawcover(1000,6000)
 
  //drawcover()
 
@@ -417,7 +411,7 @@ function drawcover(lefttop,leftbottom){
   });
   rc.polygon(pointcover, {
     fill: random([colors.body2,colors.body1,colors.sea2,colors.sea1,colors.sand2]),
-    fillStyle: random(["zigzag"]),
+    fillStyle: random(["dashed"]),
     fillWeight: 5*random(0.05,0.1),
     hachureAngle: random(10,180),
     stroke: "transparent",
